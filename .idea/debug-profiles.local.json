@@ -1,0 +1,92 @@
+{
+  "debug-profiles": [
+    {
+      "id": "bbc14e3f-6e31-4a6f-97f5-14fbd732185b",
+      "type": "lldb",
+      "name": "LLDB"
+    },
+    {
+      "id": "7b0e2f8c-4d1a-4c55-9a3e-f4d15c0f4071",
+      "type": "cortex-debug",
+      "name": "STM32F4-Discovery SWO (OpenOCD)",
+      "debuggerExecutable": "project",
+      "launch": {
+        "servertype": "openocd",
+        "serverpath": "/opt/homebrew/bin/openocd",
+        "configFiles": [
+          "board/stm32f4discovery.cfg"
+        ],
+        "executable": "$Executable$",
+        "cwd": "$WorkingDir$",
+        "device": "STM32F407VG",
+        "svdFile": "/opt/ST/STM32CubeCLT_1.17.0/STMicroelectronics_CMSIS_SVD/STM32F407.svd",
+        "gdbPath": "/opt/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/arm-none-eabi-gdb",
+        "objdumpPath": "/opt/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/arm-none-eabi-objdump",
+        "runToEntryPoint": "main",
+        "swoConfig": {
+          "enabled": true,
+          "source": "probe",
+          "cpuFrequency": 16000000,
+          "swoFrequency": 2000000,
+          "decoders": [
+            {
+              "type": "console",
+              "port": 0,
+              "label": "SWO port 0 (printf)",
+              "encoding": "ascii",
+              "timestamp": true,
+              "showOnStartup": true
+            },
+            {
+              "type": "console",
+              "port": 1,
+              "label": "SWO port 1 (UTF-8)",
+              "encoding": "utf8"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c3a9d6e2-58b7-4f0e-b1c4-f4d15c0f4072",
+      "type": "cortex-debug",
+      "name": "STM32F4-Discovery SWO (ST-LINK GDB server)",
+      "debuggerExecutable": "project",
+      "launch": {
+        "servertype": "stlink",
+        "serverpath": "/opt/ST/STM32CubeCLT_1.17.0/STLink-gdb-server/bin/ST-LINK_gdbserver",
+        "stm32cubeprogrammer": "/opt/ST/STM32CubeCLT_1.17.0/STM32CubeProgrammer/bin",
+        "interface": "swd",
+        "executable": "$Executable$",
+        "cwd": "$WorkingDir$",
+        "device": "STM32F407VG",
+        "svdFile": "/opt/ST/STM32CubeCLT_1.17.0/STMicroelectronics_CMSIS_SVD/STM32F407.svd",
+        "gdbPath": "/opt/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/arm-none-eabi-gdb",
+        "objdumpPath": "/opt/ST/STM32CubeCLT_1.17.0/GNU-tools-for-STM32/bin/arm-none-eabi-objdump",
+        "runToEntryPoint": "main",
+        "swoConfig": {
+          "enabled": true,
+          "source": "probe",
+          "cpuFrequency": 16000000,
+          "swoFrequency": 2000000,
+          "decoders": [
+            {
+              "type": "console",
+              "port": 0,
+              "label": "SWO port 0 (printf)",
+              "encoding": "ascii",
+              "timestamp": true,
+              "showOnStartup": true
+            },
+            {
+              "type": "console",
+              "port": 1,
+              "label": "SWO port 1 (UTF-8)",
+              "encoding": "utf8"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
